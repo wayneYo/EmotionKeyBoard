@@ -56,6 +56,10 @@
     YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:size text:_dataArr[indexPath.row]];
     return layout.textBoundingSize.height;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_board keyboardResignFirstResponder];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -31,7 +31,15 @@
 - (void)getTheMessage:(NSString *)text;
 
 @optional
+/**
+ *  键盘将要弹出
+ *
+ *  @param boardHeight 键盘的高度
+ */
 - (void)theKeyBoardWillShowWithKeyBoardHeight:(CGFloat)boardHeight;
+/**
+ *  键盘将要影藏
+ */
 - (void)theKeyBoardDidHiden;
 
 @end

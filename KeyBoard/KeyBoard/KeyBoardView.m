@@ -49,7 +49,7 @@
     _textView = [[UITextView alloc]initWithFrame:CGRectMake(41, 6, SCREENWIDTH-126, 32)];
     [_textView.layer setCornerRadius:6];
     _textView.backgroundColor = [UIColor whiteColor];
-    _textView.font = [UIFont systemFontOfSize:17];
+    _textView.font = [UIFont systemFontOfSize:16];
     [_textView.layer setMasksToBounds:YES];
     _textView.delegate = self;
     
@@ -104,6 +104,10 @@
 {
     self.textView.editable = YES;
     [self.textView becomeFirstResponder];
+    [UIView animateWithDuration:0.25 animations:^{
+        _faceBoard.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 250);
+        
+    }];
 }
 - (void) textViewDidEndEditing:(UITextView *)textView {
     //whatever else you need to do
@@ -149,10 +153,7 @@
     _isKeyBoardShow = !_isKeyBoardShow;
     if (_isKeyBoardShow) {
         [self textviewBegainEdit];
-        [UIView animateWithDuration:0.25 animations:^{
-            _faceBoard.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 250);
-            
-        }];
+        
     }else{
         [_textView resignFirstResponder];
         
@@ -167,6 +168,10 @@
         if ([_delegate respondsToSelector:@selector(theKeyBoardWillShowWithKeyBoardHeight:)]) {
             [_delegate theKeyBoardWillShowWithKeyBoardHeight:250];
         }
+//        结束编辑 使输入框呈现最下面部分
+        self.textView.layoutManager.allowsNonContiguousLayout = NO;
+        [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-32, _textView.contentSize.width, 32) animated:YES];
+
     }
     
     
