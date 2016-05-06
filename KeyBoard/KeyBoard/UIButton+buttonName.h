@@ -10,6 +10,12 @@
 
 @interface UIButton (buttonName)
 @property (nonatomic, copy) NSString *btnBGImageName;//按钮图片名字
+/**
+ *  发送按钮 增加发言间隔
+ *
+ *  @param timeLine 间隔时间
+ */
+- (void)startWithTimeInterval:(double)timeLine;
 @end
 
 

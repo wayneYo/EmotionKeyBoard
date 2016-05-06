@@ -13,48 +13,8 @@
 {
     self = [super init];
     if (self) {
-        _toolBar = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-44, SCREENWIDTH, 44)];
-        _toolBar.backgroundColor = [UIColor grayColor];
-        [bgview addSubview:_toolBar];
         
-        
-        _textView = [[UITextView alloc]initWithFrame:CGRectMake(41, 6, SCREENWIDTH-126, 32)];
-        [_textView.layer setCornerRadius:6];
-        _textView.backgroundColor = [UIColor whiteColor];
-        _textView.font = [UIFont systemFontOfSize:17];
-        [_textView.layer setMasksToBounds:YES];
-        _textView.delegate = self;
-        
-        [_toolBar addSubview:_textView];
-        
-        _keyboardImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 12, 21, 20)];
-        _keyboardImage.image = [UIImage imageNamed:@"icon-biaoqing"];
-        [_toolBar addSubview:_keyboardImage];
-        
-        _keyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _keyboardButton.frame = CGRectMake(0, 0, 40, 44);
-        [_keyboardButton addTarget:self action:@selector(faceBoardClick) forControlEvents:UIControlEventTouchUpInside];
-        [_toolBar addSubview:_keyboardButton];
-        
-        
-        
-        _sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sendButton.frame = CGRectMake(SCREENWIDTH-75, 7, 65, 30);
-        [_sendButton addTarget:self action:@selector(sendTheMessage) forControlEvents:UIControlEventTouchUpInside];
-        [_sendButton setImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
-        [_toolBar addSubview:_sendButton];
-        
-        
-        _faceBoard = [[FaceBoard alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 250)];
-        _faceBoard.inputTextView = _textView;
-        __weak __typeof__ (self) wself = self;
-
-        _faceBoard.sendCaiTiaoPicture = ^(NSString *str){
-            if ([wself.delegate respondsToSelector:@selector(getTheMessage:)]) {
-                [wself.delegate getTheMessage:str];
-            }
-        };
-        [bgview addSubview:_faceBoard];
+        [self loadViewWithView:bgview];
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -72,20 +32,70 @@
                                                      name:UIKeyboardDidHideNotification
                                                    object:nil];
         
-        _isKeyBoardShow = YES;
         
-        
-//        添加手势  当结束编辑状态 按textview 光标移到最后
-        UITapGestureRecognizer *tapDescription = [[UITapGestureRecognizer alloc]
-                                                  initWithTarget:self action:@selector(tapDescription:)];
-        [_textView addGestureRecognizer:tapDescription];
 
         
 
     }
     return self;
 }
+- (void)loadViewWithView:(UIView *)bgview
+{
+    _toolBar = [[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-44, SCREENWIDTH, 44)];
+    _toolBar.backgroundColor = [UIColor grayColor];
+    [bgview addSubview:_toolBar];
+    
+    
+    _textView = [[UITextView alloc]initWithFrame:CGRectMake(41, 6, SCREENWIDTH-126, 32)];
+    [_textView.layer setCornerRadius:6];
+    _textView.backgroundColor = [UIColor whiteColor];
+    _textView.font = [UIFont systemFontOfSize:17];
+    [_textView.layer setMasksToBounds:YES];
+    _textView.delegate = self;
+    
+    [_toolBar addSubview:_textView];
+    
+    _keyboardImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 12, 21, 20)];
+    _keyboardImage.image = [UIImage imageNamed:@"icon-biaoqing"];
+    [_toolBar addSubview:_keyboardImage];
+    
+    _keyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _keyboardButton.frame = CGRectMake(0, 0, 40, 44);
+    [_keyboardButton addTarget:self action:@selector(faceBoardClick) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar addSubview:_keyboardButton];
+    
+    
+    
+    _sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _sendButton.frame = CGRectMake(SCREENWIDTH-75, 7, 65, 30);
+    _sendButton.clipsToBounds = YES;
+    _sendButton.layer.cornerRadius = 5;
+    _sendButton.backgroundColor = [UIColor orangeColor];
+    [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
+    [_sendButton addTarget:self action:@selector(sendTheMessage:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar addSubview:_sendButton];
+    
+    
+    _faceBoard = [[FaceBoard alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 250)];
+    _faceBoard.inputTextView = _textView;
+    __weak __typeof__ (self) wself = self;
+    
+    _faceBoard.sendCaiTiaoPicture = ^(NSString *str){
+        if ([wself.delegate respondsToSelector:@selector(getTheMessage:)]) {
+            [wself.delegate getTheMessage:str];
+        }
+    };
+    [bgview addSubview:_faceBoard];
+    
+    _isKeyBoardShow = YES;
+    
+    
+    //        添加手势  当结束编辑状态 按textview 光标移到最后
+    UITapGestureRecognizer *tapDescription = [[UITapGestureRecognizer alloc]
+                                              initWithTarget:self action:@selector(tapDescription:)];
+    [_textView addGestureRecognizer:tapDescription];
 
+}
 - (void) tapDescription:(UIGestureRecognizer *)gr {
 //    通过手势开启编辑
     [self textviewBegainEdit];
@@ -179,17 +189,20 @@
 //    return YES;
 //}
 
-- (void)sendTheMessage
+- (void)sendTheMessage:(UIButton *)btn
 {
-    [self keyboardResignFirstResponder];
-    
-    
-    NSLog(@"%@",_textView.text);
-    
-    if ([_delegate respondsToSelector:@selector(getTheMessage:)]) {
-        [_delegate getTheMessage:_textView.text];
+    if (![_textView.text isEqualToString:@""]) {
+        [self keyboardResignFirstResponder];
+        
+        
+        NSLog(@"%@",_textView.text);
+        
+        if ([_delegate respondsToSelector:@selector(getTheMessage:)]) {
+            [_delegate getTheMessage:_textView.text];
+        }
+        _textView.text = nil;
+        [btn startWithTimeInterval:5];
     }
-    _textView.text = nil;
 }
 
 - (void)keyboardResignFirstResponder
