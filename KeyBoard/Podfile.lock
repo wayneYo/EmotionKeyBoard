@@ -1,0 +1,20 @@
+PODS:
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - YYImage (1.0.1):
+    - YYImage/Core (= 1.0.1)
+  - YYImage/Core (1.0.1)
+  - YYText (1.0.5)
+
+DEPENDENCIES:
+  - SDWebImage (~> 3.7)
+  - YYImage
+  - YYText
+
+SPEC CHECKSUMS:
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
+  YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
+
+COCOAPODS: 0.39.0
