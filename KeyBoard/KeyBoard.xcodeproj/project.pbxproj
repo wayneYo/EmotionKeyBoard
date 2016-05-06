@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AD2750DBDEFAC8A0CB2BCE3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B57124F6B8EA9D9DEEF52040 /* libPods.a */; };
+		0AD2750DBDEFAC8A0CB2BCE3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B57124F6B8EA9D9DEEF52040 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F3DEF2E1CDC31B000921524 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DEF2C1CDC31B000921524 /* ChatCell.m */; };
 		1F3DEF311CDC374500921524 /* emotionImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3DEF301CDC374500921524 /* emotionImage.plist */; };
 		1F3DEF331CDC5DA000921524 /* del_emoji_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3DEF321CDC5DA000921524 /* del_emoji_normal.png */; };
@@ -202,6 +202,7 @@
 		1FBE4A821CDB0E2400B2265F /* select3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4A7E1CDB0E2400B2265F /* select3.png */; };
 		1FBE4A881CDB3EC200B2265F /* KeyBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE4A871CDB3EC200B2265F /* KeyBoardView.m */; };
 		1FBE4A8B1CDB4A1500B2265F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4A8A1CDB4A1500B2265F /* button.png */; };
+		1FF8B36B1CDC87C400FA578D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF8B36A1CDC87C400FA578D /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -429,6 +430,7 @@
 		1FBE4A861CDB3EC200B2265F /* KeyBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardView.h; sourceTree = "<group>"; };
 		1FBE4A871CDB3EC200B2265F /* KeyBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBoardView.m; sourceTree = "<group>"; };
 		1FBE4A8A1CDB4A1500B2265F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		1FF8B36A1CDC87C400FA578D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		2C6BA0C5D535DC67EE2E529D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B57124F6B8EA9D9DEEF52040 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B841DD1AB83B704BE787123A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF8B36B1CDC87C400FA578D /* CoreFoundation.framework in Frameworks */,
 				0AD2750DBDEFAC8A0CB2BCE3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,6 +761,7 @@
 		73D44F91D27C48F15AC1E85D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FF8B36A1CDC87C400FA578D /* CoreFoundation.framework */,
 				B57124F6B8EA9D9DEEF52040 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1286,6 +1290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KeyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jyh.kxt.KeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1298,6 +1303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KeyBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jyh.kxt.KeyBoard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
