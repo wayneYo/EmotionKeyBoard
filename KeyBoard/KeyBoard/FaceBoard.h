@@ -1,10 +1,9 @@
 //
 //  FaceBoard.h
 //
-//  Created by blue on 12-9-26.
-//  Copyright (c) 2012年 blue. All rights reserved.
-//  Email - 360511404@qq.com
-//  http://github.com/bluemood
+//  Created by 杨路文 on 16/5/5.
+//  Copyright © 2016年 杨路文. All rights reserved.
+// //  729225316@qq.com
 
 #import <UIKit/UIKit.h>
 
