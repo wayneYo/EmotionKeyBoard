@@ -16,12 +16,7 @@
  *  @param timeLine 间隔时间
  */
 - (void)startWithTimeInterval:(double)timeLine;
-/**
- *  根据url字符串 转化为图片的本地的路径
- *
- *  @return 图片的本地路径
- */
-- (NSString *)getDownloadImagePath;
+
 @end
 
 
@@ -36,6 +31,13 @@
  *  @return 处理好的信息
  */
 - (NSMutableAttributedString*)dealTheMessage;
+
+/**
+ *  根据url字符串 转化为图片的本地的路径
+ *
+ *  @return 图片的本地路径
+ */
+- (NSString *)getDownloadImagePath;
 @end
 
 @interface NSData (downloadImage)
