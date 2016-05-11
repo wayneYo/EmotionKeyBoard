@@ -101,6 +101,7 @@
     NSMutableArray *rangeArr = [NSMutableArray arrayWithCapacity:0];
     for (NSTextCheckingResult *result in arr) {
         NSString *matchstring = [attr.string substringWithRange:result.range];
+        //        如果是本地图片 直接从本地取
         if ([[emotionDic allKeys] containsObject:matchstring]) {
             NSString *imageName = [emotionDic objectForKey:matchstring];
             
@@ -108,13 +109,13 @@
             NSData *data = [NSData dataWithContentsOfFile:path];
             YYImage *image = [YYImage imageWithData:data scale:2];
             image.preloadAllAnimatedImageFrames = YES;
-             YYAnimatedImageView *imageview = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-//            判断是否是彩条
+            YYAnimatedImageView *imageview = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+            //            判断是否是彩条
             if ([matchstring rangeOfString:@"[pt"].location != NSNotFound) {
                 imageview.frame = CGRectMake(0, 0, 200, 30);
             }
             imageview.image = image;
-//            imageview.image = [UIImage sd_animatedGIFNamed:imageName];
+            //            imageview.image = [UIImage sd_animatedGIFNamed:imageName];
             NSMutableAttributedString *attachemnt = [NSMutableAttributedString
                                                      yy_attachmentStringWithContent:imageview
                                                      contentMode:UIViewContentModeCenter attachmentSize:imageview.frame.size
@@ -123,6 +124,24 @@
             
             [imageArr insertObject:attachemnt atIndex:0];
             [rangeArr insertObject:result atIndex:0];
+        }else{
+            //            从网上下载
+#warning 假设的图片网址
+            NSData *imageData = imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.zhibo9988.com/cssimg/face/0.gif"]];
+            
+            YYImage *image = [YYImage imageWithData:imageData scale:1];
+            image.preloadAllAnimatedImageFrames = YES;
+            YYAnimatedImageView *imageview = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+            imageview.image = image;
+            NSMutableAttributedString *attachemnt = [NSMutableAttributedString
+                                                     yy_attachmentStringWithContent:imageview
+                                                     contentMode:UIViewContentModeCenter attachmentSize:imageview.frame.size
+                                                     alignToFont:[UIFont systemFontOfSize:16]
+                                                     alignment:YYTextVerticalAlignmentCenter];
+            
+            [imageArr insertObject:attachemnt atIndex:0];
+            [rangeArr insertObject:result atIndex:0];
+            
         }
     }
     int i = 0;
@@ -137,10 +156,3 @@
 }
 
 @end
-
-
-
-
-
-
-
