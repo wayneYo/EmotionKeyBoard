@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0AD2750DBDEFAC8A0CB2BCE3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B57124F6B8EA9D9DEEF52040 /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F028CF91CE2E48700110FE5 /* UIButton+buttonName.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F028CF81CE2E48700110FE5 /* UIButton+buttonName.m */; };
+		1F028CFD1CE2E4CF00110FE5 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F028CFC1CE2E4CF00110FE5 /* Base64.m */; };
 		1F3DEF2E1CDC31B000921524 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DEF2C1CDC31B000921524 /* ChatCell.m */; };
 		1F3DEF311CDC374500921524 /* emotionImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3DEF301CDC374500921524 /* emotionImage.plist */; };
 		1F3DEF331CDC5DA000921524 /* del_emoji_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3DEF321CDC5DA000921524 /* del_emoji_normal.png */; };
@@ -190,7 +192,6 @@
 		1FBE4A611CDAD69500B2265F /* x42.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE49BE1CDAD69500B2265F /* x42.gif */; };
 		1FBE4A6A1CDAD99A00B2265F /* FaceBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE4A691CDAD99A00B2265F /* FaceBoard.m */; };
 		1FBE4A6D1CDADA0800B2265F /* GrayPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE4A6C1CDADA0800B2265F /* GrayPageControl.m */; };
-		1FBE4A701CDAE31B00B2265F /* UIButton+buttonName.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE4A6F1CDAE31B00B2265F /* UIButton+buttonName.m */; };
 		1FBE4A721CDAE74700B2265F /* icon-biaoqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4A711CDAE74700B2265F /* icon-biaoqing.png */; };
 		1FBE4A771CDB0E1000B2265F /* btn0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4A731CDB0E1000B2265F /* btn0.png */; };
 		1FBE4A781CDB0E1000B2265F /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBE4A741CDB0E1000B2265F /* btn1.png */; };
@@ -223,6 +224,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F028CF71CE2E48700110FE5 /* UIButton+buttonName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+buttonName.h"; sourceTree = "<group>"; };
+		1F028CF81CE2E48700110FE5 /* UIButton+buttonName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+buttonName.m"; sourceTree = "<group>"; };
+		1F028CFB1CE2E4CF00110FE5 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		1F028CFC1CE2E4CF00110FE5 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		1F3DEF2B1CDC31B000921524 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
 		1F3DEF2C1CDC31B000921524 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		1F3DEF301CDC374500921524 /* emotionImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = emotionImage.plist; path = FaceBoard/emotionImage.plist; sourceTree = "<group>"; };
@@ -416,8 +421,6 @@
 		1FBE4A691CDAD99A00B2265F /* FaceBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBoard.m; sourceTree = "<group>"; };
 		1FBE4A6B1CDADA0800B2265F /* GrayPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayPageControl.h; sourceTree = "<group>"; };
 		1FBE4A6C1CDADA0800B2265F /* GrayPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayPageControl.m; sourceTree = "<group>"; };
-		1FBE4A6E1CDAE31B00B2265F /* UIButton+buttonName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+buttonName.h"; sourceTree = "<group>"; };
-		1FBE4A6F1CDAE31B00B2265F /* UIButton+buttonName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+buttonName.m"; sourceTree = "<group>"; };
 		1FBE4A711CDAE74700B2265F /* icon-biaoqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-biaoqing.png"; sourceTree = "<group>"; };
 		1FBE4A731CDB0E1000B2265F /* btn0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn0.png; sourceTree = "<group>"; };
 		1FBE4A741CDB0E1000B2265F /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
@@ -463,6 +466,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F028CFA1CE2E4B200110FE5 /* ThirdLib */ = {
+			isa = PBXGroup;
+			children = (
+				1F028CFB1CE2E4CF00110FE5 /* Base64.h */,
+				1F028CFC1CE2E4CF00110FE5 /* Base64.m */,
+			);
+			path = ThirdLib;
+			sourceTree = "<group>";
+		};
 		1FBE48CF1CDAD44800B2265F = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +506,7 @@
 				1FBE48E21CDAD44800B2265F /* ViewController.m */,
 				1F3DEF2B1CDC31B000921524 /* ChatCell.h */,
 				1F3DEF2C1CDC31B000921524 /* ChatCell.m */,
+				1F028CFA1CE2E4B200110FE5 /* ThirdLib */,
 				1FBE4A891CDB413900B2265F /* keyboard */,
 				1FBE48E41CDAD44800B2265F /* Main.storyboard */,
 				1FBE49181CDAD69400B2265F /* FaceBoard */,
@@ -752,8 +765,8 @@
 				1FBE4A691CDAD99A00B2265F /* FaceBoard.m */,
 				1FBE4A6B1CDADA0800B2265F /* GrayPageControl.h */,
 				1FBE4A6C1CDADA0800B2265F /* GrayPageControl.m */,
-				1FBE4A6E1CDAE31B00B2265F /* UIButton+buttonName.h */,
-				1FBE4A6F1CDAE31B00B2265F /* UIButton+buttonName.m */,
+				1F028CF71CE2E48700110FE5 /* UIButton+buttonName.h */,
+				1F028CF81CE2E48700110FE5 /* UIButton+buttonName.m */,
 			);
 			name = keyboard;
 			sourceTree = "<group>";
@@ -1138,13 +1151,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FBE4A701CDAE31B00B2265F /* UIButton+buttonName.m in Sources */,
 				1FBE48E31CDAD44800B2265F /* ViewController.m in Sources */,
 				1FBE4A6D1CDADA0800B2265F /* GrayPageControl.m in Sources */,
+				1F028CF91CE2E48700110FE5 /* UIButton+buttonName.m in Sources */,
 				1FBE4A6A1CDAD99A00B2265F /* FaceBoard.m in Sources */,
 				1FBE4A881CDB3EC200B2265F /* KeyBoardView.m in Sources */,
 				1F3DEF2E1CDC31B000921524 /* ChatCell.m in Sources */,
 				1FBE48E01CDAD44800B2265F /* AppDelegate.m in Sources */,
+				1F028CFD1CE2E4CF00110FE5 /* Base64.m in Sources */,
 				1FBE48DD1CDAD44800B2265F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

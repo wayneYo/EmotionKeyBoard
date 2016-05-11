@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 #import "YYText.h"
 #import "YYImage.h"
+#import "SDWebImageManager.h"
+#import "Base64.h"
 @implementation UIButton (buttonName)
 - (id)btnBGImageName
 {
@@ -50,7 +52,7 @@
         }else{
             
             int seconds = timeOut % 60;
-            NSString * timeStr = [NSString stringWithFormat:@"%0.2d",seconds];
+            NSString * timeStr = [NSString stringWithFormat:@"%d",seconds];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.backgroundColor = [UIColor orangeColor];
@@ -101,7 +103,7 @@
     NSMutableArray *rangeArr = [NSMutableArray arrayWithCapacity:0];
     for (NSTextCheckingResult *result in arr) {
         NSString *matchstring = [attr.string substringWithRange:result.range];
-        //        如果是本地图片 直接从本地取
+//        如果是本地图片 直接从本地取
         if ([[emotionDic allKeys] containsObject:matchstring]) {
             NSString *imageName = [emotionDic objectForKey:matchstring];
             
@@ -109,13 +111,12 @@
             NSData *data = [NSData dataWithContentsOfFile:path];
             YYImage *image = [YYImage imageWithData:data scale:2];
             image.preloadAllAnimatedImageFrames = YES;
-            YYAnimatedImageView *imageview = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-            //            判断是否是彩条
+             YYAnimatedImageView *imageview = [[YYAnimatedImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+//            判断是否是彩条
             if ([matchstring rangeOfString:@"[pt"].location != NSNotFound) {
                 imageview.frame = CGRectMake(0, 0, 200, 30);
             }
             imageview.image = image;
-            //            imageview.image = [UIImage sd_animatedGIFNamed:imageName];
             NSMutableAttributedString *attachemnt = [NSMutableAttributedString
                                                      yy_attachmentStringWithContent:imageview
                                                      contentMode:UIViewContentModeCenter attachmentSize:imageview.frame.size
@@ -125,9 +126,9 @@
             [imageArr insertObject:attachemnt atIndex:0];
             [rangeArr insertObject:result atIndex:0];
         }else{
-            //            从网上下载
-#warning 假设的图片网址
-            NSData *imageData = imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.zhibo9988.com/cssimg/face/0.gif"]];
+//            从网上下载
+#warning 网络图片网址瞎写的
+            NSData *imageData = imageData = [NSData customDataWithContentsOfURL:@"http://www.zhibo9988.com/cssimg/face/0.gif"];
             
             YYImage *image = [YYImage imageWithData:imageData scale:1];
             image.preloadAllAnimatedImageFrames = YES;
@@ -141,7 +142,7 @@
             
             [imageArr insertObject:attachemnt atIndex:0];
             [rangeArr insertObject:result atIndex:0];
-            
+
         }
     }
     int i = 0;
@@ -155,4 +156,39 @@
     return attr;
 }
 
+- (NSString *)getDownloadImagePath
+{
+    NSString *str = [self base64EncodedString];
+    NSString *path = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@",str]];
+    return path;
+}
+
 @end
+
+
+@implementation NSData (downloadImage)
+
++ (NSData *)customDataWithContentsOfURL:(NSString *)urlStr
+{
+    NSString *path = [urlStr getDownloadImagePath];
+    NSData *imageData;
+    if ([NSData dataWithContentsOfFile:path])
+    {
+        imageData = [NSData dataWithContentsOfFile:path];
+        NSLog(@"从本地取出来的图片");
+    }else
+    {
+        imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
+        
+        [imageData writeToFile:path atomically:YES];
+        NSLog(@"图片存储路径====%@",path);
+    }
+    return imageData;
+
+}
+
+@end
+
+
+
+
